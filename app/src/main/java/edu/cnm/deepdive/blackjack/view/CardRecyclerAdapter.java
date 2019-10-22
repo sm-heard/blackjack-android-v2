@@ -47,16 +47,15 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardHolder> {
 
     private final ImageView imageView;
 
-    public CardHolder(@NonNull View itemView) {
+    private CardHolder(@NonNull View itemView) {
       super(itemView);
       imageView = (ImageView) itemView;
     }
 
     private void bind(Card card) {
-      DeckOfCardsService service = DeckOfCardsService.getInstance();
       imageView.setContentDescription(
           context.getString(R.string.card_content_description, card.getRank(), card.getSuit()));
-      Picasso.get().load(service.getImageUrl(context, card).toString()).into(imageView);
+      Picasso.get().load(DeckOfCardsService.getImageUrl(card).toString()).into(imageView);
     }
 
   }
